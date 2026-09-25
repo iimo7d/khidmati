@@ -22,13 +22,13 @@ static asset from `public/data/`.
 
 ## Live URL
 
-https://cosmic-kangaroo-4f4f40.netlify.app/en/services
+[https://cosmic-kangaroo-4f4f40.netlify.app/en/services](https://khidmati-assessment.netlify.app/en/services)
 
 Deep links are deployed with SPA fallback support, for example:
 
-- https://cosmic-kangaroo-4f4f40.netlify.app/en/services/svc-001
-- https://cosmic-kangaroo-4f4f40.netlify.app/en/services/svc-001/apply
-- https://cosmic-kangaroo-4f4f40.netlify.app/en/requests
+- [https://khidmati-assessment.netlify.app/en/services/en/services/svc-001](https://khidmati-assessment.netlify.app/en/services/en/services/svc-001)
+- [https://khidmati-assessment.netlify.app/en/services/en/services/svc-001/apply](https://khidmati-assessment.netlify.app/en/services/en/services/svc-001/apply)
+- [https://khidmati-assessment.netlify.app/en/services/en/requests](https://khidmati-assessment.netlify.app/en/services/en/requests)
 
 ## Production Lighthouse results
 
