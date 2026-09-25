@@ -1,0 +1,58 @@
+<a
+  [routerLink]="['/', currentLang(), 'services', service().id]"
+  class="card-link"
+>
+  <mat-card class="service-card" [class.inactive]="!service().isActive">
+    <div class="card-header">
+      <div class="category-mark" aria-hidden="true">
+        <mat-icon>{{ categoryIcon() }}</mat-icon>
+      </div>
+
+      <div class="card-context">
+        @if (category(); as serviceCategory) {
+          <span class="category-name">{{ serviceCategory.name | translateData }}</span>
+        }
+        <span class="service-entity">{{ service().entity | translateData }}</span>
+      </div>
+
+      @if (!service().isActive) {
+        <span class="status-badge">
+          {{ 'catalog.temporarilyUnavailable' | translate }}
+        </span>
+      }
+    </div>
+
+    <div class="card-body">
+      <h2 class="service-title" [title]="service().name | translateData">
+        {{ service().name | translateData }}
+      </h2>
+      <p class="service-summary">{{ service().summary | translateData }}</p>
+    </div>
+
+    <div class="card-footer">
+      <div class="service-meta">
+        <span class="meta-item">
+          <mat-icon aria-hidden="true">payments</mat-icon>
+          @if (isFree()) {
+            <strong>{{ 'catalog.free' | translate }}</strong>
+          } @else {
+            <strong>{{ service().fee | jodCurrency }}</strong>
+          }
+        </span>
+
+        <span class="meta-item">
+          <mat-icon aria-hidden="true">schedule</mat-icon>
+          @if (isSameDay()) {
+            {{ 'catalog.sameDay' | translate }}
+          } @else if (service().processingDays === 1) {
+            {{ 'catalog.oneDay' | translate }}
+          } @else {
+            {{ 'catalog.days' | translate: { days: service().processingDays } }}
+          }
+        </span>
+      </div>
+
+      <mat-icon class="card-arrow" aria-hidden="true">arrow_forward</mat-icon>
+    </div>
+  </mat-card>
+</a>

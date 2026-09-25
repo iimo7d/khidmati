@@ -1,0 +1,216 @@
+:host,
+.card-link {
+  display: block;
+  height: 100%;
+}
+
+.card-link {
+  color: inherit;
+  text-decoration: none;
+  outline: none;
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 1rem;
+  background: var(--mat-sys-surface);
+  box-shadow: none;
+  transition:
+    transform 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 180ms cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-link:hover .service-card {
+  transform: translateY(-2px);
+  border-color: var(--mat-sys-outline);
+  box-shadow: 0 0.65rem 1.5rem color-mix(in srgb, var(--mat-sys-shadow) 9%, transparent);
+}
+
+.card-link:active .service-card {
+  transform: translateY(0) scale(0.99);
+}
+
+.card-link:focus-visible .service-card {
+  outline: 3px solid var(--mat-sys-primary-container);
+  outline-offset: 3px;
+}
+
+.card-header {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: center;
+  padding: 1.15rem 1.15rem 0;
+}
+
+.category-mark {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--mat-sys-outline-variant);
+  border-radius: 0.75rem;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+}
+
+.category-mark mat-icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  font-size: 1.35rem;
+}
+
+.card-context {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.category-name {
+  overflow: hidden;
+  color: var(--mat-sys-primary);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.055em;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.service-entity {
+  overflow: hidden;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.status-badge {
+  max-width: 8.5rem;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  background: var(--mat-sys-error-container);
+  color: var(--mat-sys-on-error-container);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.card-body {
+  flex: 1;
+  padding: 1.4rem 1.15rem 1.6rem;
+}
+
+.service-title {
+  display: -webkit-box;
+  min-height: 3.15rem;
+  margin: 0 0 0.65rem;
+  overflow: hidden;
+  color: var(--mat-sys-on-surface);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.32;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.service-summary {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.875rem;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.card-footer {
+  display: flex;
+  min-height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 1.15rem;
+  padding-block: 0.85rem;
+  border-block-start: 1px solid var(--mat-sys-outline-variant);
+}
+
+.service-meta {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.meta-item mat-icon,
+.card-arrow {
+  width: 1rem;
+  height: 1rem;
+  color: var(--mat-sys-primary);
+  font-size: 1rem;
+}
+
+.meta-item strong {
+  color: var(--mat-sys-on-surface);
+  font-weight: 700;
+}
+
+.card-arrow {
+  flex: 0 0 auto;
+  transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-link:hover .card-arrow {
+  transform: translateX(0.2rem);
+}
+
+:host-context([dir='rtl']) .card-arrow {
+  transform: rotate(180deg);
+}
+
+:host-context([dir='rtl']) .card-link:hover .card-arrow {
+  transform: rotate(180deg) translateX(0.2rem);
+}
+
+.service-card.inactive {
+  background: var(--mat-sys-surface-container-low);
+}
+
+@media (max-width: 420px) {
+  .card-header {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .status-badge {
+    grid-column: 1 / -1;
+    max-width: none;
+    justify-self: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .service-card,
+  .card-arrow {
+    transition: none;
+  }
+}
