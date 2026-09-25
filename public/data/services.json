@@ -1,0 +1,357 @@
+{
+  "version": 1,
+  "categories": [
+    { "id": "civil-status", "name": { "en": "Civil Status & Passports", "ar": "الأحوال المدنية والجوازات" }, "icon": "badge" },
+    { "id": "transport", "name": { "en": "Transport & Vehicles", "ar": "النقل والمركبات" }, "icon": "directions_car" },
+    { "id": "education", "name": { "en": "Education", "ar": "التعليم" }, "icon": "school" },
+    { "id": "health", "name": { "en": "Health", "ar": "الصحة" }, "icon": "local_hospital" },
+    { "id": "municipal", "name": { "en": "Municipal Services", "ar": "الخدمات البلدية" }, "icon": "location_city" },
+    { "id": "social", "name": { "en": "Social Protection", "ar": "الحماية الاجتماعية" }, "icon": "groups" },
+    { "id": "labor", "name": { "en": "Labor & Employment", "ar": "العمل والتشغيل" }, "icon": "work" }
+  ],
+  "governorates": [
+    { "id": "amman", "name": { "en": "Amman", "ar": "عمّان" } },
+    { "id": "irbid", "name": { "en": "Irbid", "ar": "إربد" } },
+    { "id": "zarqa", "name": { "en": "Zarqa", "ar": "الزرقاء" } },
+    { "id": "balqa", "name": { "en": "Balqa", "ar": "البلقاء" } },
+    { "id": "madaba", "name": { "en": "Madaba", "ar": "مادبا" } },
+    { "id": "mafraq", "name": { "en": "Mafraq", "ar": "المفرق" } },
+    { "id": "jerash", "name": { "en": "Jerash", "ar": "جرش" } },
+    { "id": "ajloun", "name": { "en": "Ajloun", "ar": "عجلون" } },
+    { "id": "karak", "name": { "en": "Karak", "ar": "الكرك" } },
+    { "id": "tafilah", "name": { "en": "Tafilah", "ar": "الطفيلة" } },
+    { "id": "maan", "name": { "en": "Ma'an", "ar": "معان" } },
+    { "id": "aqaba", "name": { "en": "Aqaba", "ar": "العقبة" } }
+  ],
+  "services": [
+    {
+      "id": "svc-001",
+      "categoryId": "civil-status",
+      "name": { "en": "Birth Certificate Issuance", "ar": "إصدار شهادة ميلاد" },
+      "summary": {
+        "en": "Request an official birth certificate for a newborn or a family member.",
+        "ar": "اطلب شهادة ميلاد رسمية لمولود جديد أو لأحد أفراد الأسرة."
+      },
+      "description": {
+        "en": "Issue an official birth certificate for a registered birth. The certificate can be collected from any civil status office or delivered to your address.",
+        "ar": "إصدار شهادة ميلاد رسمية لواقعة ولادة مسجّلة. يمكن استلام الشهادة من أي مكتب أحوال مدنية أو توصيلها إلى عنوانك."
+      },
+      "entity": { "en": "Civil Status Department", "ar": "دائرة الأحوال المدنية" },
+      "fee": 2,
+      "processingDays": 1,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "Hospital birth notification", "ar": "تبليغ الولادة الصادر عن المستشفى" },
+        { "en": "National ID cards of both parents", "ar": "البطاقة الشخصية لكلا الوالدين" }
+      ],
+      "deliveryOptions": ["pickup", "courier"],
+      "keywords": ["newborn", "baby", "مولود", "ميلاد"]
+    },
+    {
+      "id": "svc-002",
+      "categoryId": "civil-status",
+      "name": { "en": "Family Book Renewal", "ar": "تجديد دفتر العائلة" },
+      "summary": {
+        "en": "Renew an expired or damaged family book.",
+        "ar": "جدّد دفتر العائلة المنتهي أو التالف."
+      },
+      "description": {
+        "en": "Renew the family book when it expires, is damaged, or runs out of pages. The old family book must be handed over when collecting the new one.",
+        "ar": "تجديد دفتر العائلة عند انتهاء صلاحيته أو تلفه أو امتلاء صفحاته. يجب تسليم الدفتر القديم عند استلام الدفتر الجديد."
+      },
+      "entity": { "en": "Civil Status Department", "ar": "دائرة الأحوال المدنية" },
+      "fee": 10,
+      "processingDays": 3,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "Old family book", "ar": "دفتر العائلة القديم" },
+        { "en": "Personal photo of the head of the family", "ar": "صورة شخصية لرب الأسرة" }
+      ],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["family", "عائلة", "دفتر"]
+    },
+    {
+      "id": "svc-003",
+      "categoryId": "civil-status",
+      "name": { "en": "Passport Renewal", "ar": "تجديد جواز السفر" },
+      "summary": {
+        "en": "Renew your passport before or after it expires.",
+        "ar": "جدّد جواز سفرك قبل انتهاء صلاحيته أو بعدها."
+      },
+      "description": {
+        "en": "Renew an ordinary passport for adults. You can track the request online and choose to collect the passport in person or receive it by courier.",
+        "ar": "تجديد جواز السفر العادي للبالغين. يمكنك متابعة الطلب إلكترونياً واختيار استلام الجواز شخصياً أو عبر خدمة التوصيل."
+      },
+      "entity": { "en": "Civil Status Department", "ar": "دائرة الأحوال المدنية" },
+      "fee": 50,
+      "processingDays": 5,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "Current passport", "ar": "جواز السفر الحالي" },
+        { "en": "Recent personal photo (white background)", "ar": "صورة شخصية حديثة بخلفية بيضاء" }
+      ],
+      "deliveryOptions": ["pickup", "courier"],
+      "keywords": ["travel", "جواز", "سفر"]
+    },
+    {
+      "id": "svc-004",
+      "categoryId": "civil-status",
+      "name": { "en": "Lost National ID Card Replacement", "ar": "بدل فاقد للبطاقة الشخصية" },
+      "summary": {
+        "en": "Get a replacement for a lost or stolen national ID card.",
+        "ar": "احصل على بدل فاقد لبطاقتك الشخصية المفقودة أو المسروقة."
+      },
+      "description": {
+        "en": "Issue a replacement national ID card after reporting it lost or stolen. The previous card is cancelled as soon as the request is approved.",
+        "ar": "إصدار بطاقة شخصية بدل فاقد بعد الإبلاغ عن فقدانها أو سرقتها. يتم إلغاء البطاقة السابقة فور الموافقة على الطلب."
+      },
+      "entity": { "en": "Civil Status Department", "ar": "دائرة الأحوال المدنية" },
+      "fee": 20,
+      "processingDays": 2,
+      "isActive": true,
+      "requiredDocuments": [{ "en": "Police loss report", "ar": "ضبط فقدان صادر عن الشرطة" }],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["id", "identity", "هوية", "بطاقة"]
+    },
+    {
+      "id": "svc-005",
+      "categoryId": "transport",
+      "name": { "en": "Driving License Renewal", "ar": "تجديد رخصة القيادة" },
+      "summary": {
+        "en": "Renew your driving license on the same day.",
+        "ar": "جدّد رخصة القيادة في نفس اليوم."
+      },
+      "description": {
+        "en": "Renew a private driving license. A medical fitness check may be required for drivers above a certain age.",
+        "ar": "تجديد رخصة القيادة الخصوصية. قد يُطلب فحص لياقة طبية للسائقين فوق سن معيّنة."
+      },
+      "entity": { "en": "Vehicle Licensing Department", "ar": "دائرة ترخيص السواقين والمركبات" },
+      "fee": 15,
+      "processingDays": 0,
+      "isActive": true,
+      "requiredDocuments": [{ "en": "Current driving license", "ar": "رخصة القيادة الحالية" }],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["license", "driver", "رخصة", "قيادة"]
+    },
+    {
+      "id": "svc-006",
+      "categoryId": "transport",
+      "name": { "en": "Vehicle Registration Renewal", "ar": "تجديد ترخيص المركبة" },
+      "summary": {
+        "en": "Renew your vehicle's annual registration.",
+        "ar": "جدّد الترخيص السنوي لمركبتك."
+      },
+      "description": {
+        "en": "Renew the annual registration of a private vehicle. Make sure the compulsory insurance is valid and any traffic fines are settled before applying.",
+        "ar": "تجديد الترخيص السنوي للمركبة الخصوصية. تأكد من سريان التأمين الإلزامي وتسديد أي مخالفات سير قبل التقديم."
+      },
+      "entity": { "en": "Vehicle Licensing Department", "ar": "دائرة ترخيص السواقين والمركبات" },
+      "fee": 45.5,
+      "processingDays": 1,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "Vehicle registration card", "ar": "رخصة المركبة" },
+        { "en": "Valid compulsory insurance", "ar": "تأمين إلزامي ساري المفعول" }
+      ],
+      "deliveryOptions": ["pickup", "courier"],
+      "keywords": ["car", "vehicle", "سيارة", "مركبة"]
+    },
+    {
+      "id": "svc-007",
+      "categoryId": "transport",
+      "name": { "en": "Traffic Clearance Certificate", "ar": "شهادة براءة ذمة من مخالفات السير" },
+      "summary": {
+        "en": "Prove that you have no unpaid traffic violations.",
+        "ar": "أثبت عدم وجود مخالفات سير غير مسددة عليك."
+      },
+      "description": {
+        "en": "Issue a certificate confirming that the applicant has no outstanding traffic violations. Commonly requested by employers and embassies.",
+        "ar": "إصدار شهادة تؤكد عدم وجود مخالفات سير مستحقة على مقدّم الطلب. تطلبها عادةً جهات العمل والسفارات."
+      },
+      "entity": { "en": "Traffic Directorate", "ar": "إدارة السير" },
+      "fee": 0,
+      "processingDays": 0,
+      "isActive": true,
+      "deliveryOptions": ["pickup", "courier"]
+    },
+    {
+      "id": "svc-008",
+      "categoryId": "education",
+      "name": { "en": "School Transfer Request", "ar": "طلب نقل طالب بين المدارس" },
+      "summary": {
+        "en": "Move a student from one public school to another.",
+        "ar": "انقل طالباً من مدرسة حكومية إلى أخرى."
+      },
+      "description": {
+        "en": "Submit a request to transfer a student between public schools, for example after moving to a new area. The receiving school confirms that a seat is available.",
+        "ar": "تقديم طلب لنقل طالب بين المدارس الحكومية، مثلاً بعد الانتقال إلى منطقة سكن جديدة. تؤكد المدرسة المستقبِلة توفّر مقعد."
+      },
+      "entity": { "en": "Ministry of Education", "ar": "وزارة التربية والتعليم" },
+      "fee": 0,
+      "processingDays": 7,
+      "isActive": true,
+      "requiredDocuments": [],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["student", "school", "طالب", "مدرسة"]
+    },
+    {
+      "id": "svc-009",
+      "categoryId": "education",
+      "name": { "en": "Tawjihi Certificate Copy", "ar": "نسخة عن شهادة التوجيهي" },
+      "summary": {
+        "en": "Request a certified copy of your secondary school certificate.",
+        "ar": "اطلب نسخة مصدّقة عن شهادة الثانوية العامة."
+      },
+      "description": {
+        "en": "Issue a certified copy of the General Secondary Education Certificate (Tawjihi) for graduates of any year.",
+        "ar": "إصدار نسخة مصدّقة عن شهادة الدراسة الثانوية العامة (التوجيهي) لخريجي أي سنة."
+      },
+      "entity": { "en": "Ministry of Education", "ar": "وزارة التربية والتعليم" },
+      "fee": 3,
+      "processingDays": 2,
+      "isActive": true,
+      "requiredDocuments": [{ "en": "National ID card", "ar": "البطاقة الشخصية" }],
+      "deliveryOptions": ["pickup", "courier"],
+      "keywords": ["tawjihi", "certificate", "توجيهي", "ثانوية"]
+    },
+    {
+      "id": "svc-010",
+      "categoryId": "education",
+      "name": { "en": "Foreign Certificate Equivalency", "ar": "معادلة شهادة جامعية أجنبية" },
+      "summary": {
+        "en": "Get a foreign university degree officially recognized.",
+        "ar": "احصل على اعتراف رسمي بشهادتك الجامعية الأجنبية."
+      },
+      "description": {
+        "en": "Submit a foreign university degree for equivalency. This service is temporarily unavailable while the new evaluation system is being rolled out.",
+        "ar": "تقديم شهادة جامعية أجنبية لمعادلتها. هذه الخدمة متوقفة مؤقتاً لحين تفعيل نظام التقييم الجديد."
+      },
+      "entity": { "en": "Ministry of Higher Education", "ar": "وزارة التعليم العالي والبحث العلمي" },
+      "fee": 25,
+      "processingDays": 14,
+      "isActive": false,
+      "requiredDocuments": [
+        { "en": "Original degree certificate", "ar": "الشهادة الجامعية الأصلية" },
+        { "en": "Official transcript", "ar": "كشف العلامات الرسمي" },
+        { "en": "Passport copy", "ar": "صورة عن جواز السفر" }
+      ],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["university", "degree", "جامعة", "معادلة"]
+    },
+    {
+      "id": "svc-011",
+      "categoryId": "health",
+      "name": { "en": "Health Insurance Card Issuance", "ar": "إصدار بطاقة تأمين صحي" },
+      "summary": {
+        "en": "Issue a public health insurance card for yourself or a dependant.",
+        "ar": "أصدِر بطاقة تأمين صحي حكومي لك أو لأحد المعالين."
+      },
+      "description": {
+        "en": "Issue a public health insurance card that covers treatment at public hospitals and health centers.",
+        "ar": "إصدار بطاقة تأمين صحي حكومي تغطي العلاج في المستشفيات والمراكز الصحية الحكومية."
+      },
+      "entity": { "en": "Ministry of Health", "ar": "وزارة الصحة" },
+      "fee": 12.75,
+      "processingDays": 3,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "National ID card", "ar": "البطاقة الشخصية" },
+        { "en": "Personal photo", "ar": "صورة شخصية" }
+      ],
+      "deliveryOptions": ["pickup", "courier"],
+      "keywords": ["insurance", "تأمين", "صحي"]
+    },
+    {
+      "id": "svc-012",
+      "categoryId": "health",
+      "name": {
+        "en": "Medical Fitness Certificate for Employment in the Public and Private Sectors, Including Periodic Re-examination",
+        "ar": "شهادة اللياقة الصحية لغايات التعيين في القطاعين العام والخاص بما في ذلك إعادة الفحص الدوري"
+      },
+      "summary": {
+        "en": "A medical fitness certificate required by many employers.",
+        "ar": "شهادة لياقة صحية تطلبها كثير من جهات العمل."
+      },
+      "description": {
+        "en": "Book a medical examination and receive a fitness certificate for employment. Results are valid for one year from the examination date.",
+        "ar": "احجز فحصاً طبياً واحصل على شهادة لياقة صحية لغايات التعيين. النتائج صالحة لمدة سنة من تاريخ الفحص."
+      },
+      "entity": { "en": "Ministry of Health", "ar": "وزارة الصحة" },
+      "fee": 8,
+      "processingDays": 2,
+      "isActive": true,
+      "requiredDocuments": [{ "en": "National ID card", "ar": "البطاقة الشخصية" }],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["medical", "fitness", "لياقة", "فحص"]
+    },
+    {
+      "id": "svc-013",
+      "categoryId": "municipal",
+      "name": { "en": "Building Permit Application", "ar": "طلب رخصة بناء" },
+      "summary": {
+        "en": "Apply for a permit before starting any construction work.",
+        "ar": "قدّم طلب رخصة قبل البدء بأي أعمال بناء."
+      },
+      "description": {
+        "en": "Apply for a building permit for residential construction. Engineering drawings are reviewed by the municipality before the permit is issued.",
+        "ar": "تقديم طلب رخصة بناء للأبنية السكنية. تتم مراجعة المخططات الهندسية من قبل البلدية قبل إصدار الرخصة."
+      },
+      "entity": { "en": "Municipal Services Directorate", "ar": "مديرية الخدمات البلدية" },
+      "fee": 120,
+      "processingDays": 21,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "Land ownership deed", "ar": "سند ملكية الأرض" },
+        { "en": "Site plan", "ar": "مخطط الموقع التنظيمي" },
+        { "en": "Architectural drawings", "ar": "المخططات المعمارية" },
+        { "en": "Structural drawings", "ar": "المخططات الإنشائية" },
+        { "en": "Engineers Association approval", "ar": "موافقة نقابة المهندسين" },
+        { "en": "Owner's national ID card", "ar": "البطاقة الشخصية للمالك" }
+      ],
+      "deliveryOptions": ["pickup"],
+      "keywords": ["construction", "permit", "بناء", "رخصة"]
+    },
+    {
+      "id": "svc-014",
+      "categoryId": "municipal",
+      "name": { "en": "Shop License Renewal", "ar": "تجديد رخصة المهن" },
+      "summary": {
+        "en": "Renew the annual license for your shop or small business.",
+        "ar": "جدّد الرخصة السنوية لمحلك أو مشروعك الصغير."
+      },
+      "description": {
+        "en": "Renew the annual vocational license for shops and small businesses operating within municipal boundaries.",
+        "ar": "تجديد رخصة المهن السنوية للمحلات والمشاريع الصغيرة العاملة ضمن حدود البلدية."
+      },
+      "entity": { "en": "Municipal Services Directorate", "ar": "مديرية الخدمات البلدية" },
+      "fee": 35,
+      "processingDays": 3,
+      "isActive": true,
+      "requiredDocuments": [
+        { "en": "Previous license", "ar": "الرخصة السابقة" },
+        { "en": "Lease contract", "ar": "عقد الإيجار" }
+      ],
+      "deliveryOptions": ["pickup", "courier"],
+      "keywords": ["shop", "business", "محل", "مهن"]
+    },
+    {
+      "id": "svc-015",
+      "categoryId": "social",
+      "name": { "en": "Cash Support Eligibility Statement", "ar": "كشف أهلية الدعم النقدي" },
+      "summary": {
+        "en": "Get a statement of your household's eligibility for cash support.",
+        "ar": "احصل على كشف بأهلية أسرتك للدعم النقدي."
+      },
+      "description": {
+        "en": "Issue an official statement showing whether a household is eligible for the cash support program, based on the latest registered data. Delivered by courier only.",
+        "ar": "إصدار كشف رسمي يبيّن أهلية الأسرة لبرنامج الدعم النقدي بناءً على آخر البيانات المسجلة. يُسلَّم عبر خدمة التوصيل فقط."
+      },
+      "entity": { "en": "Social Protection Fund", "ar": "صندوق الحماية الاجتماعية" },
+      "fee": 0,
+      "processingDays": 0,
+      "isActive": true,
+      "deliveryOptions": ["courier"],
+      "keywords": ["support", "aid", "دعم", "معونة"]
+    }
+  ]
+}
