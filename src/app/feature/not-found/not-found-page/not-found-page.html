@@ -1,0 +1,19 @@
+<section class="not-found-container" aria-labelledby="not-found-title">
+  <div class="icon-circle">
+    <mat-icon class="search-icon">sentiment_dissatisfied</mat-icon>
+  </div>
+
+  <span class="error-code">404</span>
+  <h1 id="not-found-title" class="not-found-title">{{ 'notFound.title' | translate }}</h1>
+  <p class="not-found-desc">{{ 'notFound.desc' | translate }}</p>
+
+  <a
+    mat-flat-button
+    color="primary"
+    class="back-btn"
+    [routerLink]="['/', i18n.currentLang(), 'services']"
+  >
+    <mat-icon class="mirror-rtl">arrow_back</mat-icon>
+    <span>{{ 'notFound.backHome' | translate }}</span>
+  </a>
+</section>

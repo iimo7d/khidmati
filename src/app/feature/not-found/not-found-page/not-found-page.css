@@ -1,0 +1,64 @@
+:host {
+  display: block;
+}
+
+.not-found-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 1.5rem;
+  background-color: var(--mat-sys-surface);
+  border-radius: 12px;
+  border: 1px dashed var(--mat-sys-outline-variant);
+  margin-block: 2rem;
+}
+
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--mat-sys-surface-container);
+  margin-bottom: 1rem;
+}
+
+.search-icon {
+  font-size: 36px;
+  width: 36px;
+  height: 36px;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.error-code {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--mat-sys-primary);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.not-found-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mat-sys-on-surface);
+}
+
+.not-found-desc {
+  margin: 0 0 2rem 0;
+  font-size: 1rem;
+  color: var(--mat-sys-on-surface-variant);
+  max-width: 440px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+}

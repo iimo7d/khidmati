@@ -1,0 +1,107 @@
+<section class="requests-page" aria-labelledby="requests-heading">
+  <div class="requests-header">
+    <h1 id="requests-heading" class="page-title">{{ 'requests.title' | translate }}</h1>
+  </div>
+
+  @if (isLoading()) {
+    <div class="loading-state" role="status" aria-live="polite">
+      <mat-spinner diameter="48"></mat-spinner>
+    </div>
+  }
+
+  @else if (requests().length === 0) {
+    <app-empty-state
+      icon="inbox"
+      [title]="'requests.emptyTitle' | translate"
+      [description]="'requests.emptyDesc' | translate"
+      [actionLabel]="'requests.browseServices' | translate"
+      (actionClick)="browseServices()"
+    ></app-empty-state>
+  }
+
+  @else {
+    <div class="desktop-table-container">
+      <table class="requests-table">
+        <thead>
+          <tr>
+            <th>{{ 'requests.reference' | translate }}</th>
+            <th>{{ 'requests.service' | translate }}</th>
+            <th>{{ 'requests.submitted' | translate }}</th>
+            <th>{{ 'requests.status' | translate }}</th>
+            <th class="actions-header">
+              <span class="sr-only">{{ 'common.actions' | translate }}</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (req of requests(); track req.referenceNumber) {
+            <tr class="table-row" [class.cancelled-row]="req.status === 'cancelled'">
+              
+              <td class="reference-cell">
+                <strong>{{ req.referenceNumber }}</strong>
+              </td>
+
+              <td class="service-cell">
+                {{ getServiceName(req.serviceId) }}
+              </td>
+
+              <td class="date-cell">
+                {{ req.submittedAt | localizedDate: 'mediumDate' }}
+              </td>
+
+              <td class="status-cell">
+                <span class="status-chip" [class.cancelled]="req.status === 'cancelled'">
+                  {{
+                    (req.status === 'submitted'
+                      ? 'requests.statusLabels.submitted'
+                      : 'requests.statusLabels.cancelled'
+                    ) | translate
+                  }}
+                </span>
+              </td>
+
+              <td class="actions-cell">
+                @if (req.status === 'submitted') {
+                  <button mat-button color="warn" type="button" (click)="onCancelRequest(req)">
+                    {{ 'requests.cancel' | translate }}
+                  </button>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <div class="mobile-cards-list">
+      @for (req of requests(); track req.referenceNumber) {
+        <mat-card class="mobile-request-card" [class.cancelled-card]="req.status === 'cancelled'">
+          <mat-card-header class="card-header">
+            <span class="card-ref">{{ req.referenceNumber }}</span>
+            <span class="status-chip" [class.cancelled]="req.status === 'cancelled'">
+              {{
+                (req.status === 'submitted'
+                  ? 'requests.statusLabels.submitted'
+                  : 'requests.statusLabels.cancelled'
+                ) | translate
+              }}
+            </span>
+          </mat-card-header>
+
+          <mat-card-content class="card-content">
+            <h3 class="card-service-name">{{ getServiceName(req.serviceId) }}</h3>
+            <p class="card-date">{{ req.submittedAt | localizedDate: 'mediumDate' }}</p>
+          </mat-card-content>
+
+          @if (req.status === 'submitted') {
+            <mat-card-actions align="end" class="card-actions">
+              <button mat-button color="warn" type="button" (click)="onCancelRequest(req)">
+                {{ 'requests.cancel' | translate }}
+              </button>
+            </mat-card-actions>
+          }
+        </mat-card>
+      }
+    </div>
+  }
+</section>
