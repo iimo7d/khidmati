@@ -1,0 +1,23 @@
+.dialog-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.title-icon {
+  color: var(--mat-sys-error);
+}
+
+.dialog-content {
+  font-size: 0.95rem;
+  color: var(--mat-sys-on-surface-variant);
+  line-height: 1.5;
+  padding-top: 0.5rem;
+}
+
+.dialog-actions {
+  padding-bottom: 0.5rem;
+}

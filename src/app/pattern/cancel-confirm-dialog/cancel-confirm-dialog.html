@@ -1,0 +1,22 @@
+<h2 mat-dialog-title class="dialog-title">
+  <mat-icon color="warn" class="title-icon">warning</mat-icon>
+  <span>{{ 'requests.cancelDialog.title' | translate }}</span>
+</h2>
+
+<mat-dialog-content class="dialog-content">
+  <p>
+    {{
+      'requests.cancelDialog.message'
+        | translate: { ref: data.referenceNumber, service: data.serviceName }
+    }}
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end" class="dialog-actions">
+  <button mat-button type="button" [mat-dialog-close]="false">
+    {{ 'requests.cancelDialog.keep' | translate }}
+  </button>
+  <button mat-flat-button color="warn" type="button" [mat-dialog-close]="true">
+    {{ 'requests.cancelDialog.confirm' | translate }}
+  </button>
+</mat-dialog-actions>
