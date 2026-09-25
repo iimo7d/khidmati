@@ -1,0 +1,149 @@
+{
+  "nav": {
+    "brand": "خدماتي",
+    "services": "الخدمات",
+    "requests": "طلباتي",
+    "switchLang": "English",
+    "switchToArabic": "التبديل إلى العربية",
+    "switchToEnglish": "التبديل إلى الإنجليزية",
+    "switchToDark": "التبديل إلى الوضع الداكن",
+    "switchToLight": "التبديل إلى الوضع الفاتح"
+  },
+  "footer": {
+    "assessmentPortal": "© 2026 خدماتي — بوابة تقييم الواجهة الأمامية لسند"
+  },
+  "catalog": {
+    "title": "الخدمات الحكومية",
+    "subtitle": "ابحث عن خدمة، تحقق من المتطلبات، وقدّم طلبك إلكترونياً.",
+    "searchPlaceholder": "ابحث عن خدمة...",
+    "allCategories": "الكل",
+    "servicesCount": "{count} خدمة",
+    "temporarilyUnavailable": "متوقفة مؤقتاً",
+    "free": "مجاناً",
+    "sameDay": "في نفس اليوم",
+    "days": "{days} أيام",
+    "oneDay": "يوم واحد",
+    "emptyTitle": "لم يتم العثور على خدمات",
+    "emptyDesc": "جرّب تعديل كلمات البحث أو تصفية التصنيفات.",
+    "clearFilters": "مسح التصفية",
+    "errorTitle": "تعذّر تحميل الخدمات",
+    "errorDesc": "لم نتمكن من تحميل دليل الخدمات. يرجى التحقق من اتصالك والمحاولة مجدداً.",
+    "retry": "إعادة المحاولة"
+  },
+  "details": {
+    "breadcrumbServices": "الخدمات",
+    "applyNow": "قدّم الآن",
+    "serviceUnavailable": "هذه الخدمة متوقفة مؤقتاً.",
+    "fee": "الرسوم",
+    "processingTime": "مدة الإنجاز",
+    "workingDays": "{days} أيام عمل",
+    "delivery": "طريقة الاستلام",
+    "deliveryPickup": "استلام شخصي",
+    "deliveryCourier": "توصيل",
+    "aboutService": "عن الخدمة",
+    "requiredDocuments": "الوثائق المطلوبة",
+    "noDocumentsRequired": "لا توجد وثائق مطلوبة",
+    "notFoundTitle": "الخدمة غير موجودة",
+    "notFoundDesc": "الخدمة المطلوبة غير متوفرة أو تمت إزالتها.",
+    "backToCatalog": "العودة إلى الخدمات"
+  },
+  "apply": {
+    "titlePrefix": "تقديم طلب:",
+    "steps": {
+      "applicant": "مقدّم الطلب",
+      "delivery": "الاستلام والتوصيل",
+      "review": "المراجعة والإرسال"
+    },
+    "applicant": {
+      "fullName": "الاسم الكامل",
+      "fullNamePlaceholder": "أدخل الاسم الرباعي الكامل",
+      "nationalId": "الرقم الوطني",
+      "nationalIdPlaceholder": "الرقم الوطني المكون من 10 أرقام",
+      "mobile": "رقم الهاتف",
+      "mobilePlaceholder": "07XXXXXXXX",
+      "email": "البريد الإلكتروني (اختياري)",
+      "emailPlaceholder": "name@example.com",
+      "dateOfBirth": "تاريخ الميلاد"
+    },
+    "delivery": {
+      "deliveryMethod": "طريقة الاستلام",
+      "pickup": "استلام من أحد المكاتب",
+      "courier": "توصيل إلى عنواني",
+      "appointmentDate": "موعد الاستلام",
+      "governorate": "المحافظة",
+      "selectGovernorate": "اختر المحافظة",
+      "streetAddress": "عنوان الشارع",
+      "streetAddressPlaceholder": "اسم المبنى، الشارع، المنطقة",
+      "notes": "ملاحظات (اختياري)",
+      "notesPlaceholder": "أي تعليمات خاصة بالتوصيل أو الموعد..."
+    },
+    "review": {
+      "heading": "ملخص الطلب",
+      "confirmation": "أقر بأن المعلومات الواردة أعلاه صحيحة ودقيقة.",
+      "submit": "إرسال الطلب",
+      "submitting": "جارٍ الإرسال...",
+      "back": "السابق",
+      "next": "التالي"
+    },
+    "success": {
+      "title": "تم تقديم الطلب بنجاح",
+      "refLabel": "رقم المرجع الخاص بك",
+      "viewRequests": "عرض طلباتي",
+      "backToServices": "العودة إلى الخدمات"
+    }
+  },
+  "requests": {
+    "title": "طلباتي",
+    "reference": "رقم المرجع",
+    "service": "الخدمة",
+    "submitted": "تاريخ التقديم",
+    "status": "الحالة",
+    "cancel": "إلغاء",
+    "emptyTitle": "لا توجد طلبات بعد",
+    "emptyDesc": "الطلبات التي تقوم بإرسالها ستظهر هنا.",
+    "browseServices": "استعراض الخدمات",
+    "cancelDialog": {
+      "title": "إلغاء هذا الطلب؟",
+      "message": "سيتم إلغاء الطلب {ref} ({service}). لا يمكنك التراجع عن هذا الإجراء.",
+      "keep": "الاحتفاظ بالطلب",
+      "confirm": "تأكيد الإلغاء"
+    },
+    "statusLabels": {
+      "submitted": "مُقدَّم",
+      "cancelled": "مُلغى"
+    }
+  },
+  "errors": {
+    "required": "هذا الحقل مطلوب.",
+    "minLength": "يجب ألا يقل عن {min} أحرف.",
+    "maxLength": "يجب ألا يتجاوز {max} حرفاً.",
+    "nationalId": "الرقم الوطني يجب أن يتكون من 10 أرقام بالضبط.",
+    "jordanianMobile": "يجب إدخال رقم هاتف أردني صحيح (مثال: 0791234567).",
+    "email": "يرجى إدخال بريد إلكتروني صحيح.",
+    "minAge": "يجب أن يكون عمر مقدّم الطلب 18 عاماً على الأقل.",
+    "appointmentFuture": "يجب اختيار تاريخ في المستقبل.",
+    "appointmentWeekend": "لا يمكن حجز موعد يوم الجمعة أو السبت."
+  },
+  "common": {
+    "jod": "د.أ",
+    "free": "مجاناً",
+    "httpError": "حدث خطأ أثناء الاتصال بالخادم.",
+    "dismiss": "إغلاق",
+    "actions": "الإجراءات",
+    "clearSearch": "مسح البحث",
+    "categorySelection": "اختيار التصنيف",
+    "breadcrumb": "مسار التنقل",
+    "mainNavigation": "التنقل الرئيسي"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "desc": "الصفحة التي تبحث عنها غير متوفرة.",
+    "backHome": "العودة إلى الخدمات"
+  },
+  "unsavedChanges": {
+    "title": "تغييرات غير محفوظة",
+    "message": "لديك بيانات غير محفوظة في النموذج. إذا غادرت الآن، ستفقد المعلومات التي قمت بإدخالها.",
+    "stay": "البقاء في الصفحة",
+    "leave": "مغادرة وتجاهل التغييرات"
+  }
+}
