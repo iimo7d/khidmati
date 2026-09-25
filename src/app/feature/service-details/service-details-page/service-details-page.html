@@ -1,0 +1,171 @@
+<div class="details-page-wrapper">
+  @if (servicesData.loading() && !servicesData.isLoaded()) {
+    <div class="details-skeleton" role="status" aria-live="polite">
+      <span class="skeleton-line skeleton-breadcrumb"></span>
+      <div class="skeleton-layout">
+        <div class="skeleton-main">
+          <span class="skeleton-line skeleton-eyebrow"></span>
+          <span class="skeleton-line skeleton-title"></span>
+          <span class="skeleton-line skeleton-copy"></span>
+          <span class="skeleton-line skeleton-copy skeleton-copy-short"></span>
+        </div>
+        <div class="skeleton-panel"></div>
+      </div>
+    </div>
+  } @else if (servicesData.isLoaded() && !service()) {
+    <div class="not-found-card" role="alert">
+      <div class="not-found-icon-circle">
+        <mat-icon>help_outline</mat-icon>
+      </div>
+      <h1>{{ 'details.notFoundTitle' | translate }}</h1>
+      <p>{{ 'details.notFoundDesc' | translate }}</p>
+      <a
+        mat-flat-button
+        color="primary"
+        [routerLink]="['/', i18n.currentLang(), 'services']"
+      >
+        <mat-icon class="mirror-rtl">arrow_back</mat-icon>
+        <span>{{ 'details.backToCatalog' | translate }}</span>
+      </a>
+    </div>
+  } @else if (service(); as s) {
+    <article class="service-details-container">
+      <nav class="breadcrumb" [attr.aria-label]="'common.breadcrumb' | translate">
+        <a [routerLink]="['/', i18n.currentLang(), 'services']">
+          <mat-icon class="mirror-rtl">arrow_back</mat-icon>
+          <span>{{ 'details.breadcrumbServices' | translate }}</span>
+        </a>
+        <span class="breadcrumb-separator" aria-hidden="true">/</span>
+        <span aria-current="page">{{ s.name | translateData }}</span>
+      </nav>
+
+      <div class="service-layout">
+        <div class="service-main">
+          <div class="service-hero">
+            <div class="service-mark" aria-hidden="true">
+              <mat-icon>{{ category()?.icon || 'label' }}</mat-icon>
+            </div>
+            <div class="hero-copy">
+              <span class="category-label">{{ category()?.name | translateData }}</span>
+              <h1 class="service-title">{{ s.name | translateData }}</h1>
+              <p class="entity-name">{{ s.entity | translateData }}</p>
+            </div>
+          </div>
+
+          <dl class="service-facts">
+            <div class="fact-item">
+              <dt>
+                <mat-icon aria-hidden="true">payments</mat-icon>
+                {{ 'details.fee' | translate }}
+              </dt>
+              <dd>
+                @if (isFree()) {
+                  {{ 'catalog.free' | translate }}
+                } @else {
+                  {{ s.fee | jodCurrency }}
+                }
+              </dd>
+            </div>
+
+            <div class="fact-item">
+              <dt>
+                <mat-icon aria-hidden="true">schedule</mat-icon>
+                {{ 'details.processingTime' | translate }}
+              </dt>
+              <dd>
+                @if (isSameDay()) {
+                  {{ 'catalog.sameDay' | translate }}
+                } @else if (s.processingDays === 1) {
+                  {{ 'catalog.oneDay' | translate }}
+                } @else {
+                  {{ 'details.workingDays' | translate: { days: s.processingDays } }}
+                }
+              </dd>
+            </div>
+
+            <div class="fact-item">
+              <dt>
+                <mat-icon aria-hidden="true">local_shipping</mat-icon>
+                {{ 'details.delivery' | translate }}
+              </dt>
+              <dd>{{ deliveryOptionsText() }}</dd>
+            </div>
+          </dl>
+
+          <section class="detail-section" aria-labelledby="about-service-heading">
+            <div class="section-heading">
+              <span class="section-number" aria-hidden="true">01</span>
+              <h2 id="about-service-heading">{{ 'details.aboutService' | translate }}</h2>
+            </div>
+            <p class="service-description">{{ s.description | translateData }}</p>
+          </section>
+
+          <section class="detail-section" aria-labelledby="required-documents-heading">
+            <div class="section-heading">
+              <span class="section-number" aria-hidden="true">02</span>
+              <h2 id="required-documents-heading">
+                {{ 'details.requiredDocuments' | translate }}
+              </h2>
+            </div>
+
+            @if (s.requiredDocuments && s.requiredDocuments.length > 0) {
+              <ul class="documents-list">
+                @for (doc of s.requiredDocuments; track $index) {
+                  <li>
+                    <span class="document-icon" aria-hidden="true">
+                      <mat-icon>description</mat-icon>
+                    </span>
+                    <span>{{ doc | translateData }}</span>
+                  </li>
+                }
+              </ul>
+            } @else {
+              <div class="no-docs-box">
+                <mat-icon aria-hidden="true">check_circle</mat-icon>
+                <span>{{ 'details.noDocumentsRequired' | translate }}</span>
+              </div>
+            }
+          </section>
+        </div>
+
+        <aside class="action-panel" aria-labelledby="action-panel-title">
+          <div class="action-panel-header">
+            <span class="action-kicker">{{ category()?.name | translateData }}</span>
+            <h2 id="action-panel-title">{{ s.name | translateData }}</h2>
+            <p>{{ s.entity | translateData }}</p>
+          </div>
+
+          <div class="action-summary">
+            <span>{{ 'details.fee' | translate }}</span>
+            <strong>
+              @if (isFree()) {
+                {{ 'catalog.free' | translate }}
+              } @else {
+                {{ s.fee | jodCurrency }}
+              }
+            </strong>
+          </div>
+
+          <a
+            mat-flat-button
+            color="primary"
+            class="apply-btn"
+            [disabled]="!s.isActive"
+            [routerLink]="s.isActive ? ['/', i18n.currentLang(), 'services', s.id, 'apply'] : null"
+            [attr.aria-disabled]="!s.isActive"
+          >
+            <span>{{ 'details.applyNow' | translate }}</span>
+            <mat-icon class="mirror-rtl">arrow_forward</mat-icon>
+          </a>
+
+          @if (!s.isActive) {
+            <p class="unavailable-notice" role="status">
+              <mat-icon aria-hidden="true">info</mat-icon>
+              <span>{{ 'details.serviceUnavailable' | translate }}</span>
+            </p>
+          }
+        </aside>
+      </div>
+    </article>
+  }
+</div>
