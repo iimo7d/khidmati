@@ -1,0 +1,425 @@
+<div class="apply-container">
+  <div class="apply-header">
+    <nav class="breadcrumb" [attr.aria-label]="'common.breadcrumb' | translate">
+      <a [routerLink]="['/', i18n.currentLang(), 'services']">
+        <mat-icon class="mirror-rtl" aria-hidden="true">arrow_back</mat-icon>
+        <span>{{ 'details.breadcrumbServices' | translate }}</span>
+      </a>
+      @if (service(); as s) {
+        <span class="breadcrumb-service" aria-hidden="true">/</span>
+        <a [routerLink]="['/', i18n.currentLang(), 'services', s.id]">
+          {{ s.name | translateData }}
+        </a>
+      }
+    </nav>
+
+    @if (service(); as s) {
+      <div class="heading-grid">
+        <div>
+          <p class="service-entity">{{ s.entity | translateData }}</p>
+          <h1 class="page-title">{{ 'apply.titlePrefix' | translate }} {{ s.name | translateData }}</h1>
+        </div>
+        <p class="service-summary">{{ s.summary | translateData }}</p>
+      </div>
+    }
+  </div>
+
+  @if (submittedRequest(); as req) {
+    <section class="success-view" role="status" aria-live="polite">
+      <div class="success-mark" aria-hidden="true">
+        <mat-icon>check</mat-icon>
+      </div>
+      <div class="success-copy">
+        <p class="success-label">{{ 'apply.success.refLabel' | translate }}</p>
+        <h2>{{ 'apply.success.title' | translate }}</h2>
+        <p class="reference-number">{{ req.referenceNumber }}</p>
+      </div>
+      <div class="success-actions">
+        <a mat-flat-button color="primary" [routerLink]="['/', i18n.currentLang(), 'requests']">
+          <mat-icon aria-hidden="true">receipt_long</mat-icon>
+          <span>{{ 'apply.success.viewRequests' | translate }}</span>
+        </a>
+        <a mat-button [routerLink]="['/', i18n.currentLang(), 'services']">
+          <mat-icon class="mirror-rtl" aria-hidden="true">arrow_back</mat-icon>
+          <span>{{ 'apply.success.backToServices' | translate }}</span>
+        </a>
+      </div>
+    </section>
+  } @else {
+    <mat-stepper linear #stepper class="apply-stepper">
+      <mat-step [stepControl]="applicantForm" [label]="'apply.steps.applicant' | translate">
+        <form
+          [formGroup]="applicantForm"
+          class="step-form"
+          [attr.aria-label]="'apply.steps.applicant' | translate"
+        >
+          <div class="step-layout">
+            <div class="step-content">
+              <div class="form-grid">
+                <mat-form-field appearance="outline" class="full-width">
+                  <mat-label>{{ 'apply.applicant.fullName' | translate }}</mat-label>
+                  <input
+                    matInput
+                    formControlName="fullName"
+                    autocomplete="name"
+                    [placeholder]="'apply.applicant.fullNamePlaceholder' | translate"
+                  />
+                  @if (
+                    applicantForm.controls.fullName.touched && applicantForm.controls.fullName.errors
+                  ) {
+                    <mat-error>
+                      @if (applicantForm.controls.fullName.hasError('required')) {
+                        {{ 'errors.required' | translate }}
+                      } @else if (applicantForm.controls.fullName.hasError('minlength')) {
+                        {{ 'errors.minLength' | translate: { min: 3 } }}
+                      } @else if (applicantForm.controls.fullName.hasError('maxlength')) {
+                        {{ 'errors.maxLength' | translate: { max: 80 } }}
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'apply.applicant.nationalId' | translate }}</mat-label>
+                  <input
+                    matInput
+                    formControlName="nationalId"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    maxlength="10"
+                    [placeholder]="'apply.applicant.nationalIdPlaceholder' | translate"
+                  />
+                  @if (
+                    applicantForm.controls.nationalId.touched &&
+                    applicantForm.controls.nationalId.errors
+                  ) {
+                    <mat-error>
+                      @if (applicantForm.controls.nationalId.hasError('required')) {
+                        {{ 'errors.required' | translate }}
+                      } @else {
+                        {{ 'errors.nationalId' | translate }}
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'apply.applicant.mobile' | translate }}</mat-label>
+                  <input
+                    matInput
+                    formControlName="mobile"
+                    inputmode="tel"
+                    autocomplete="tel"
+                    maxlength="10"
+                    [placeholder]="'apply.applicant.mobilePlaceholder' | translate"
+                  />
+                  @if (applicantForm.controls.mobile.touched && applicantForm.controls.mobile.errors) {
+                    <mat-error>
+                      @if (applicantForm.controls.mobile.hasError('required')) {
+                        {{ 'errors.required' | translate }}
+                      } @else {
+                        {{ 'errors.jordanianMobile' | translate }}
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'apply.applicant.email' | translate }}</mat-label>
+                  <input
+                    matInput
+                    type="email"
+                    formControlName="email"
+                    autocomplete="email"
+                    [placeholder]="'apply.applicant.emailPlaceholder' | translate"
+                  />
+                  @if (applicantForm.controls.email.touched && applicantForm.controls.email.errors) {
+                    <mat-error>{{ 'errors.email' | translate }}</mat-error>
+                  }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                  <mat-label>{{ 'apply.applicant.dateOfBirth' | translate }}</mat-label>
+                  <input matInput [matDatepicker]="dobPicker" formControlName="dateOfBirth" />
+                  <mat-datepicker-toggle matIconSuffix [for]="dobPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #dobPicker></mat-datepicker>
+                  @if (
+                    applicantForm.controls.dateOfBirth.touched &&
+                    applicantForm.controls.dateOfBirth.errors
+                  ) {
+                    <mat-error>
+                      @if (applicantForm.controls.dateOfBirth.hasError('required')) {
+                        {{ 'errors.required' | translate }}
+                      } @else if (applicantForm.controls.dateOfBirth.hasError('minAge')) {
+                        {{ 'errors.minAge' | translate }}
+                      }
+                    </mat-error>
+                  }
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions actions-end">
+            <button
+              mat-flat-button
+              color="primary"
+              type="button"
+              (click)="goNext(applicantForm, stepper)"
+            >
+              <span>{{ 'apply.review.next' | translate }}</span>
+              <mat-icon class="mirror-rtl" aria-hidden="true">arrow_forward</mat-icon>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="deliveryForm" [label]="'apply.steps.delivery' | translate">
+        <form
+          [formGroup]="deliveryForm"
+          class="step-form"
+          [attr.aria-label]="'apply.steps.delivery' | translate"
+        >
+          <div class="step-layout">
+            <div class="step-content">
+              <fieldset class="delivery-method-group">
+                <legend>{{ 'apply.delivery.deliveryMethod' | translate }} *</legend>
+                <mat-radio-group formControlName="method" class="radio-options">
+                  @if (service()?.deliveryOptions?.includes('pickup')) {
+                    <mat-radio-button value="pickup">
+                      <span class="radio-label">
+                        <mat-icon aria-hidden="true">storefront</mat-icon>
+                        <span>{{ 'apply.delivery.pickup' | translate }}</span>
+                      </span>
+                    </mat-radio-button>
+                  }
+                  @if (service()?.deliveryOptions?.includes('courier')) {
+                    <mat-radio-button value="courier">
+                      <span class="radio-label">
+                        <mat-icon aria-hidden="true">local_shipping</mat-icon>
+                        <span>{{ 'apply.delivery.courier' | translate }}</span>
+                      </span>
+                    </mat-radio-button>
+                  }
+                </mat-radio-group>
+              </fieldset>
+
+              <div class="dynamic-fields">
+                @if (deliveryForm.controls.method.value === 'pickup') {
+                  <mat-form-field appearance="outline">
+                    <mat-label>{{ 'apply.delivery.appointmentDate' | translate }}</mat-label>
+                    <input
+                      matInput
+                      [matDatepicker]="appointmentPicker"
+                      [min]="minAppointmentDate"
+                      [matDatepickerFilter]="dateFilter"
+                      formControlName="appointmentDate"
+                    />
+                    <mat-datepicker-toggle
+                      matIconSuffix
+                      [for]="appointmentPicker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker #appointmentPicker></mat-datepicker>
+                    @if (
+                      deliveryForm.controls.appointmentDate.touched &&
+                      deliveryForm.controls.appointmentDate.errors
+                    ) {
+                      <mat-error>
+                        @if (deliveryForm.controls.appointmentDate.hasError('required')) {
+                          {{ 'errors.required' | translate }}
+                        } @else if (
+                          deliveryForm.controls.appointmentDate.hasError('appointmentFuture')
+                        ) {
+                          {{ 'errors.appointmentFuture' | translate }}
+                        } @else if (
+                          deliveryForm.controls.appointmentDate.hasError('appointmentWeekend')
+                        ) {
+                          {{ 'errors.appointmentWeekend' | translate }}
+                        }
+                      </mat-error>
+                    }
+                  </mat-form-field>
+                }
+
+                @if (deliveryForm.controls.method.value === 'courier') {
+                  <div class="form-grid">
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'apply.delivery.governorate' | translate }}</mat-label>
+                      <mat-select formControlName="governorateId">
+                        <mat-option [value]="null">
+                          {{ 'apply.delivery.selectGovernorate' | translate }}
+                        </mat-option>
+                        @for (gov of servicesData.governorates(); track gov.id) {
+                          <mat-option [value]="gov.id">{{ gov.name | translateData }}</mat-option>
+                        }
+                      </mat-select>
+                      @if (
+                        deliveryForm.controls.governorateId.touched &&
+                        deliveryForm.controls.governorateId.hasError('required')
+                      ) {
+                        <mat-error>{{ 'errors.required' | translate }}</mat-error>
+                      }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+                      <mat-label>{{ 'apply.delivery.streetAddress' | translate }}</mat-label>
+                      <input
+                        matInput
+                        formControlName="street"
+                        autocomplete="street-address"
+                        [placeholder]="'apply.delivery.streetAddressPlaceholder' | translate"
+                      />
+                      @if (
+                        deliveryForm.controls.street.touched && deliveryForm.controls.street.errors
+                      ) {
+                        <mat-error>
+                          @if (deliveryForm.controls.street.hasError('required')) {
+                            {{ 'errors.required' | translate }}
+                          } @else if (deliveryForm.controls.street.hasError('minlength')) {
+                            {{ 'errors.minLength' | translate: { min: 5 } }}
+                          }
+                        </mat-error>
+                      }
+                    </mat-form-field>
+                  </div>
+                }
+
+                <mat-form-field appearance="outline" class="full-width notes-field">
+                  <mat-label>{{ 'apply.delivery.notes' | translate }}</mat-label>
+                  <textarea
+                    matInput
+                    rows="4"
+                    formControlName="notes"
+                    maxlength="250"
+                    [placeholder]="'apply.delivery.notesPlaceholder' | translate"
+                  ></textarea>
+                  <mat-hint align="end">{{ notesLength() }} / 250</mat-hint>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button mat-button matStepperPrevious type="button">
+              <mat-icon class="mirror-rtl" aria-hidden="true">arrow_back</mat-icon>
+              <span>{{ 'apply.review.back' | translate }}</span>
+            </button>
+            <button
+              mat-flat-button
+              color="primary"
+              type="button"
+              (click)="goNext(deliveryForm, stepper)"
+            >
+              <span>{{ 'apply.review.next' | translate }}</span>
+              <mat-icon class="mirror-rtl" aria-hidden="true">arrow_forward</mat-icon>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="reviewForm" [label]="'apply.steps.review' | translate">
+        <section
+          class="step-form review-section"
+          [attr.aria-label]="'apply.review.heading' | translate"
+        >
+          <div class="step-layout">
+            <div class="step-content">
+              <dl class="summary-list">
+                <div class="summary-item full-row">
+                  <dt>{{ 'requests.service' | translate }}</dt>
+                  <dd class="summary-service">{{ service()?.name | translateData }}</dd>
+                </div>
+                <div class="summary-item">
+                  <dt>{{ 'apply.applicant.fullName' | translate }}</dt>
+                  <dd>{{ applicantForm.controls.fullName.value }}</dd>
+                </div>
+                <div class="summary-item">
+                  <dt>{{ 'apply.applicant.nationalId' | translate }}</dt>
+                  <dd>{{ applicantForm.controls.nationalId.value }}</dd>
+                </div>
+                <div class="summary-item">
+                  <dt>{{ 'apply.applicant.mobile' | translate }}</dt>
+                  <dd>{{ applicantForm.controls.mobile.value }}</dd>
+                </div>
+                <div class="summary-item">
+                  <dt>{{ 'apply.applicant.dateOfBirth' | translate }}</dt>
+                  <dd>{{ applicantForm.controls.dateOfBirth.value | localizedDate: 'mediumDate' }}</dd>
+                </div>
+                <div class="summary-item">
+                  <dt>{{ 'apply.delivery.deliveryMethod' | translate }}</dt>
+                  <dd>
+                    @if (deliveryForm.controls.method.value === 'pickup') {
+                      {{ 'apply.delivery.pickup' | translate }}
+                    } @else {
+                      {{ 'apply.delivery.courier' | translate }}
+                    }
+                  </dd>
+                </div>
+                @if (deliveryForm.controls.method.value === 'pickup') {
+                  <div class="summary-item">
+                    <dt>{{ 'apply.delivery.appointmentDate' | translate }}</dt>
+                    <dd>
+                      {{ deliveryForm.controls.appointmentDate.value | localizedDate: 'fullDate' }}
+                    </dd>
+                  </div>
+                }
+                @if (deliveryForm.controls.method.value === 'courier') {
+                  <div class="summary-item">
+                    <dt>{{ 'apply.delivery.governorate' | translate }}</dt>
+                    <dd>
+                      {{
+                        servicesData.getGovernorateById(
+                          deliveryForm.controls.governorateId.value || ''
+                        )?.name | translateData
+                      }}
+                    </dd>
+                  </div>
+                  <div class="summary-item">
+                    <dt>{{ 'apply.delivery.streetAddress' | translate }}</dt>
+                    <dd>{{ deliveryForm.controls.street.value }}</dd>
+                  </div>
+                }
+                @if (deliveryForm.controls.notes.value) {
+                  <div class="summary-item full-row">
+                    <dt>{{ 'apply.delivery.notes' | translate }}</dt>
+                    <dd>{{ deliveryForm.controls.notes.value }}</dd>
+                  </div>
+                }
+              </dl>
+
+              <form [formGroup]="reviewForm" class="confirmation-form">
+                <mat-checkbox formControlName="confirmed" color="primary">
+                  {{ 'apply.review.confirmation' | translate }}
+                </mat-checkbox>
+              </form>
+            </div>
+          </div>
+
+          <div class="step-actions">
+            <button mat-button matStepperPrevious type="button" [disabled]="isSubmitting()">
+              <mat-icon class="mirror-rtl" aria-hidden="true">arrow_back</mat-icon>
+              <span>{{ 'apply.review.back' | translate }}</span>
+            </button>
+            <button
+              mat-flat-button
+              color="primary"
+              type="button"
+              class="submit-btn"
+              [disabled]="reviewForm.invalid || isSubmitting()"
+              (click)="onSubmit()"
+            >
+              @if (isSubmitting()) {
+                <mat-spinner diameter="20"></mat-spinner>
+              } @else {
+                <mat-icon aria-hidden="true">check_circle</mat-icon>
+              }
+              <span>
+                {{ (isSubmitting() ? 'apply.review.submitting' : 'apply.review.submit') | translate }}
+              </span>
+            </button>
+          </div>
+        </section>
+      </mat-step>
+    </mat-stepper>
+  }
+</div>
