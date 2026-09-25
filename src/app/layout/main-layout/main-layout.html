@@ -1,0 +1,79 @@
+<div class="app-container">
+  
+  <header class="site-header" [class.site-header--hidden]="!isNavVisible()">
+    <mat-toolbar class="app-toolbar">
+      <div class="toolbar-content">
+        
+        <a [routerLink]="['/', i18n.currentLang(), 'services']" class="brand-link">
+          <mat-icon class="brand-icon">account_balance</mat-icon>
+          <span class="brand-name">{{ 'nav.brand' | translate }}</span>
+        </a>
+
+        
+        <nav class="nav-links" [attr.aria-label]="'common.mainNavigation' | translate">
+          <a
+            mat-button
+            [routerLink]="['/', i18n.currentLang(), 'services']"
+            routerLinkActive="active-nav-link"
+            ariaCurrentWhenActive="page"
+          >
+            {{ 'nav.services' | translate }}
+          </a>
+
+          <a
+            mat-button
+            [routerLink]="['/', i18n.currentLang(), 'requests']"
+            routerLinkActive="active-nav-link"
+            ariaCurrentWhenActive="page"
+          >
+            {{ 'nav.requests' | translate }}
+          </a>
+        </nav>
+
+        
+        <div class="toolbar-actions">
+          <button
+            mat-stroked-button
+            type="button"
+            class="lang-switch-btn"
+            (click)="switchLanguage()"
+            [attr.aria-label]="
+              i18n.currentLang() === 'en'
+                ? ('nav.switchToArabic' | translate)
+                : ('nav.switchToEnglish' | translate)
+            "
+          >
+            <mat-icon>language</mat-icon>
+            <span>{{ 'nav.switchLang' | translate }}</span>
+          </button>
+
+          <button
+            mat-stroked-button
+            type="button"
+            class="theme-toggle-btn"
+            (click)="theme.toggle()"
+            [attr.aria-label]="
+              theme.theme() === 'dark'
+                ? ('nav.switchToLight' | translate)
+                : ('nav.switchToDark' | translate)
+            "
+          >
+            <mat-icon>{{ theme.theme() === 'dark' ? 'light_mode' : 'dark_mode' }}</mat-icon>
+          </button>
+        </div>
+      </div>
+    </mat-toolbar>
+  </header>
+
+  
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
+
+  
+  <footer class="app-footer">
+    <div class="footer-content">
+      <p>{{ 'footer.assessmentPortal' | translate }}</p>
+    </div>
+  </footer>
+</div>

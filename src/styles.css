@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--mat-sys-surface-container-lowest);
+  color: var(--mat-sys-on-surface);
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+[dir='rtl'] {
+  text-align: start;
+}
+
+
+[dir='rtl'] .mirror-rtl {
+  transform: scaleX(-1);
+}
+
+
+.error-snackbar {
+  --mdc-snackbar-container-color: var(--mat-sys-error);
+  --mat-snack-bar-button-color: var(--mat-sys-on-error);
+  color: var(--mat-sys-on-error);
+}
+
+@media (max-width: 600px) {
+  .apply-stepper .mat-horizontal-stepper-header-container {
+    align-items: flex-start;
+  }
+
+  .apply-stepper .mat-horizontal-stepper-header {
+    flex: 1 1 0;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-width: 0;
+    height: auto;
+    padding: 1rem 0.25rem;
+  }
+
+  .apply-stepper .mat-stepper-horizontal-line {
+    align-self: flex-start;
+    margin-top: 1.75rem;
+  }
+
+  .apply-stepper .mat-step-label {
+    width: 100%;
+    overflow: visible;
+    font-size: 0.75rem;
+    line-height: 1.15;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .apply-stepper .mat-step-text-label {
+    overflow: visible;
+    text-overflow: clip;
+  }
+}
