@@ -12,7 +12,6 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { EMPTY, catchError } from 'rxjs';
 
-
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatChipsModule } from '@angular/material/chips';
@@ -55,22 +54,19 @@ export class CatalogPage implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
 
-  
   readonly searchTerm = signal<string>('');
   readonly selectedCategoryId = signal<string | null>(null);
 
-  
   readonly filteredServices = computed<GovService[]>(() => {
     const allServices = this.servicesData.services();
     const query = this.searchTerm().trim();
     const categoryId = this.selectedCategoryId();
 
     return allServices.filter((service) => {
-      
       if (categoryId && service.categoryId !== categoryId) {
         return false;
       }
-      
+
       if (!query) {
         return true;
       }
@@ -83,38 +79,35 @@ export class CatalogPage implements OnInit {
     });
   });
 
-  
   readonly resultsCountText = computed(() => {
     const count = this.filteredServices().length;
     return this.i18n.t('catalog.servicesCount', { count });
   });
 
   ngOnInit(): void {
-    
     this.servicesData
       .loadData()
       .pipe(catchError(() => EMPTY))
       .subscribe();
 
-    
     this.route.queryParamMap
       .pipe(takeUntilDestroyed<ParamMap>(this.destroyRef))
       .subscribe((params: ParamMap) => {
         const q = params.get('q') ?? '';
-        const cat = params.get('category');
+        const category = params.get('category');
+
         this.searchTerm.set(q);
-        this.selectedCategoryId.set(cat);
+        this.selectedCategoryId.set(category);
       });
   }
 
-  
   onSearchChange(value: string): void {
     this.searchTerm.set(value);
     this.syncQueryParams();
   }
 
-  onSelectCategory(categoryId: string | null): void {
-    this.selectedCategoryId.set(categoryId);
+  onSelectCategory(categoryId: string | null, selected: boolean): void {
+    this.selectedCategoryId.set(selected ? categoryId : null);
     this.syncQueryParams();
   }
 
@@ -138,8 +131,8 @@ export class CatalogPage implements OnInit {
     this.router.navigate([], {
       relativeTo: this.route,
       queryParams: {
-        q: query ? query : null,
-        category: category ? category : null,
+        q: query || null,
+        category: category || null,
       },
       queryParamsHandling: 'merge',
       replaceUrl: true,

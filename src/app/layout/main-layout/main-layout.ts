@@ -24,9 +24,9 @@ import { ThemeService } from '../../core/theme/theme.service';
 export class MainLayout {
   readonly i18n = inject(I18nService);
   readonly theme = inject(ThemeService);
-  readonly isNavVisible = signal(true);
-
   private readonly router = inject(Router);
+
+  readonly isNavVisible = signal(true);
   private previousScrollY = 0;
   private accumulatedScroll = 0;
 

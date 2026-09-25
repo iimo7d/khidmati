@@ -1,13 +1,10 @@
 <section class="catalog-page" aria-labelledby="catalog-heading">
-  
   <div class="catalog-header">
     <h1 id="catalog-heading" class="catalog-title">{{ 'catalog.title' | translate }}</h1>
     <p class="catalog-subtitle">{{ 'catalog.subtitle' | translate }}</p>
   </div>
 
-  
   <div class="filters-section">
-    
     <mat-form-field appearance="outline" class="search-form-field">
       <mat-icon matPrefix class="search-icon">search</mat-icon>
       <input
@@ -31,25 +28,22 @@
       }
     </mat-form-field>
 
-    
     <div class="category-chips-wrapper">
       <mat-chip-listbox
         class="category-chips"
         [attr.aria-label]="'common.categorySelection' | translate"
       >
-        
         <mat-chip-option
           [selected]="selectedCategoryId() === null"
-          (selectionChange)="onSelectCategory(null)"
+          (selectionChange)="onSelectCategory(null, $event.selected)"
         >
           {{ 'catalog.allCategories' | translate }}
         </mat-chip-option>
 
-        
         @for (category of servicesData.categories(); track category.id) {
           <mat-chip-option
             [selected]="selectedCategoryId() === category.id"
-            (selectionChange)="onSelectCategory(category.id)"
+            (selectionChange)="onSelectCategory(category.id, $event.selected)"
           >
             <mat-icon matChipAvatar>{{ category.icon }}</mat-icon>
             {{ category.name | translateData }}
@@ -59,15 +53,11 @@
     </div>
   </div>
 
-  
   @if (servicesData.loading() && !servicesData.isLoaded()) {
     <div class="loading-state" role="status" aria-live="polite">
       <mat-spinner diameter="48"></mat-spinner>
     </div>
-  }
-
-  
-  @else if (servicesData.error()) {
+  } @else if (servicesData.error()) {
     <div class="error-banner" role="alert">
       <mat-icon class="error-icon">error_outline</mat-icon>
       <div class="error-text">
@@ -78,16 +68,11 @@
         {{ 'catalog.retry' | translate }}
       </button>
     </div>
-  }
-
-  
-  @else {
-    
+  } @else {
     <div class="results-header" aria-live="polite">
       <span class="results-count">{{ resultsCountText() }}</span>
     </div>
 
-    
     @if (filteredServices().length === 0) {
       <app-empty-state
         icon="search_off"
@@ -96,10 +81,7 @@
         [actionLabel]="'catalog.clearFilters' | translate"
         (actionClick)="clearFilters()"
       ></app-empty-state>
-    }
-
-    
-    @else {
+    } @else {
       <div class="services-grid" role="list">
         @for (service of filteredServices(); track service.id) {
           <div role="listitem">

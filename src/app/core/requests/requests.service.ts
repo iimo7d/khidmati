@@ -83,7 +83,9 @@ export class RequestsService {
     try {
       const raw = localStorage.getItem(this.storageKey);
       if (!raw) return [];
+
       const parsed: ServiceRequest[] = JSON.parse(raw);
+
       return parsed.sort(
         (a, b) => new Date(b.submittedAt).getTime() - new Date(a.submittedAt).getTime(),
       );
