@@ -22,7 +22,6 @@ export const languageGuard: CanActivateFn = (
   const langParam = route.paramMap.get('lang');
 
   if (!langParam || !SUPPORTED_LANGUAGES.includes(langParam as Lang)) {
-
     const segments = state.url.split('/').filter(Boolean);
 
     if (segments.length > 0) {
@@ -31,7 +30,7 @@ export const languageGuard: CanActivateFn = (
       segments.push(FALLBACK_LANG, 'services');
     }
 
-    return router.createUrlTree(['/' + segments.join('/')]);
+    return router.parseUrl('/' + segments.join('/'));
   }
 
   return i18n.setLanguage(langParam as Lang).pipe(
