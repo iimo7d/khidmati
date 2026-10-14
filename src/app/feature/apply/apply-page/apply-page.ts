@@ -192,7 +192,7 @@ export class ApplyPage implements OnInit {
       return;
     }
 
-    if (this.isSubmitting()) return; 
+    if (this.isSubmitting()) return;
     this.isSubmitting.set(true);
 
     const applicant = this.applicantForm.getRawValue();
